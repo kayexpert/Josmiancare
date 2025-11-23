@@ -41,6 +41,10 @@ h6 {
     color: var(--accent-color);
 }
 
+p{
+    font-size: 19px;
+}
+
 a {
     text-decoration: none;
 }
@@ -292,12 +296,13 @@ a {
 .principle-card {
     display: flex;
     align-items: center;
-    padding: 1.5rem;
+    padding: 2rem;
     background-color: #fff;
     border-left: 5px solid var(--primary-color);
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
+    max-width: 400px;
 }
 
 .principle-card:hover {
@@ -306,11 +311,11 @@ a {
 }
 
 .principle-image {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 1.5rem;
+    margin-right: 2rem;
     flex-shrink: 0;
 }
 
