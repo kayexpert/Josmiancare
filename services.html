@@ -16,6 +16,11 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Animate.css for WOW.js -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
 
   <body>
@@ -73,19 +78,30 @@
     >
       <div class="hero-overlay"></div>
       <div class="container position-relative text-center text-white">
-        <h1 class="display-3 fw-bold text-light">Our Services</h1>
-        <p class="lead">
+        <h1
+          class="display-3 fw-bold text-light wow animate__fadeInUp"
+          data-wow-delay="0.2s"
+        >
+          Our Services
+        </h1>
+        <p class="lead wow animate__fadeInUp" data-wow-delay="0.2s">
           Comprehensive Care and Support for Children and Youth
         </p>
       </div>
     </header>
 
     <!-- Services List -->
-    <section class="section-padding">
+    <section
+      class="section-padding wow animate__fadeInUp"
+      data-wow-delay="0.2s"
+    >
       <div class="container">
         <!-- Service 1 -->
         <div class="row align-items-center mb-5">
-          <div class="col-lg-6 order-lg-2">
+          <div
+            class="col-lg-6 order-lg-2 wow animate__fadeInRight"
+            data-wow-delay="0.2s"
+          >
             <div class="ps-lg-5">
               <div class="icon-box bg-light" style="margin: 0px !important">
                 <i class="bi bi-house-door-fill"></i>
@@ -110,7 +126,10 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6 order-lg-1">
+          <div
+            class="col-lg-6 order-lg-1 wow animate__fadeInLeft"
+            data-wow-delay="0.2s"
+          >
             <img
               src="assets/bedroom.jpg"
               alt="Residential Care"
@@ -121,7 +140,7 @@
 
         <!-- Service 2 -->
         <div class="row align-items-center mb-5">
-          <div class="col-lg-6">
+          <div class="col-lg-6 wow animate__fadeInLeft" data-wow-delay="0.2s">
             <div class="pe-lg-5">
               <div class="icon-box bg-light" style="margin: 0px !important">
                 <i class="bi bi-heart-pulse-fill"></i>
@@ -148,7 +167,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 wow animate__fadeInRight" data-wow-delay="0.2s">
             <img
               src="assets/therapy-room.jpg"
               alt="Therapeutic Support"
@@ -159,7 +178,10 @@
 
         <!-- Service 3 -->
         <div class="row align-items-center mb-5">
-          <div class="col-lg-6 order-lg-2">
+          <div
+            class="col-lg-6 order-lg-2 wow animate__fadeInRight"
+            data-wow-delay="0.2s"
+          >
             <div class="ps-lg-5">
               <div class="icon-box bg-light" style="margin: 0px !important">
                 <i class="bi bi-people-fill"></i>
@@ -186,7 +208,10 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6 order-lg-1">
+          <div
+            class="col-lg-6 order-lg-1 wow animate__fadeInLeft"
+            data-wow-delay="0.2s"
+          >
             <img
               src="assets/dining-together.jpg"
               alt="Group Home"
@@ -197,7 +222,7 @@
 
         <!-- Service 4 -->
         <div class="row align-items-center mb-5">
-          <div class="col-lg-6">
+          <div class="col-lg-6 wow animate__fadeInLeft" data-wow-delay="0.2s">
             <div class="pe-lg-5">
               <div class="icon-box bg-light" style="margin: 0px !important">
                 <i class="bi bi-book-half"></i>
@@ -223,7 +248,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 wow animate__fadeInRight" data-wow-delay="0.2s">
             <img
               src="assets/life-skills.jpg"
               alt="Life Skills"
@@ -303,5 +328,18 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- WOW JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script>
+      new WOW({
+        boxClass: "wow",
+        animateClass: "animate__animated",
+        offset: 0,
+        mobile: true,
+        live: true,
+      }).init();
+    </script>
   </body>
 </html>
