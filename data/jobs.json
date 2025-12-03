@@ -1,0 +1,59 @@
+[
+  {
+    "id": "youth-worker-ft-ottawa",
+    "slug": "youth-worker-ft-ottawa",
+    "title": "Child and Youth Worker",
+    "department": "Care Services",
+    "location": "office",
+    "employmentType": "full-time",
+    "salaryRange": { "min": 48000, "max": 58000, "currency": "CAD" },
+    "applicationDeadline": "2026-01-15",
+    "description": "Provide trauma-informed, 24/7 residential support within a structured, rights-based care environment.",
+    "qualifications": [
+      "Diploma/Degree in Child and Youth Care or related field",
+      "First Aid/CPR and PMAB or equivalent",
+      "Experience in residential care settings"
+    ],
+    "applicationInstructions": "Submit your resume and cover letter to careers@josmiancare.com with subject 'Child and Youth Worker'.",
+    "isActive": true,
+    "createdAt": "2025-12-01"
+  },
+  {
+    "id": "program-supervisor-hybrid",
+    "slug": "program-supervisor-hybrid",
+    "title": "Program Supervisor",
+    "department": "Operations",
+    "location": "hybrid",
+    "employmentType": "full-time",
+    "salaryRange": { "min": 65000, "max": 80000, "currency": "CAD" },
+    "applicationDeadline": "2026-02-01",
+    "description": "Lead multidisciplinary teams, ensure compliance, and drive outcomes across group home programs.",
+    "qualifications": [
+      "5+ years in child and youth service leadership",
+      "Knowledge of Ministry standards and trauma-informed practice",
+      "Strong communication and case management skills"
+    ],
+    "applicationInstructions": "Apply via the website form or email careers@josmiancare.com.",
+    "isActive": true,
+    "createdAt": "2025-12-01"
+  },
+  {
+    "id": "therapeutic-clinician-contract-remote",
+    "slug": "therapeutic-clinician-contract-remote",
+    "title": "Therapeutic Clinician (Contract)",
+    "department": "Clinical",
+    "location": "remote",
+    "employmentType": "contract",
+    "salaryRange": { "min": 60, "max": 85, "currency": "CAD/hour" },
+    "applicationDeadline": "2025-12-20",
+    "description": "Deliver clinical assessments and therapeutic interventions for youth across programs.",
+    "qualifications": [
+      "Registered Psychotherapist or Social Worker (MSW/RP)",
+      "Experience with youth mental health",
+      "Strong assessment and documentation skills"
+    ],
+    "applicationInstructions": "Include portfolio of case summaries and availability in your application.",
+    "isActive": true,
+    "createdAt": "2025-12-01"
+  }
+]

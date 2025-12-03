@@ -25,10 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.classList.add('shadow-sm');
-            navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
         } else {
             navbar.classList.remove('shadow-sm');
-            navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
         }
     });
 
