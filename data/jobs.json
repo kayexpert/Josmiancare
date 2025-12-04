@@ -6,7 +6,6 @@
     "department": "Care Services",
     "location": "office",
     "employmentType": "full-time",
-    "salaryRange": { "min": 48000, "max": 58000, "currency": "CAD" },
     "applicationDeadline": "2026-01-15",
     "description": "Provide trauma-informed, 24/7 residential support within a structured, rights-based care environment.",
     "qualifications": [
@@ -25,7 +24,6 @@
     "department": "Operations",
     "location": "hybrid",
     "employmentType": "full-time",
-    "salaryRange": { "min": 65000, "max": 80000, "currency": "CAD" },
     "applicationDeadline": "2026-02-01",
     "description": "Lead multidisciplinary teams, ensure compliance, and drive outcomes across group home programs.",
     "qualifications": [
@@ -44,7 +42,6 @@
     "department": "Clinical",
     "location": "remote",
     "employmentType": "contract",
-    "salaryRange": { "min": 60, "max": 85, "currency": "CAD/hour" },
     "applicationDeadline": "2025-12-20",
     "description": "Deliver clinical assessments and therapeutic interventions for youth across programs.",
     "qualifications": [
