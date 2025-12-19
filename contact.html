@@ -111,17 +111,23 @@
             </div>
           </div>
           <div class="col-lg-7">
-            <form class="contact-form-home">
+            <form 
+              id="contactForm" 
+              class="contact-form-home"
+              action="https://formspree.io/f/info@josmiancare.com"
+              method="POST"
+            >
               <div class="row g-4 ps-lg-5">
                 <div class="col-md-6">
-                  <div
-                    class="form-group"
-                  >
+                  <div class="form-group">
                     <i class="bi bi-person"></i>
                     <input
                       type="text"
+                      id="name"
+                      name="name"
                       class="form-control"
                       placeholder="Name"
+                      required
                     />
                   </div>
                 </div>
@@ -130,8 +136,11 @@
                     <i class="bi bi-envelope"></i>
                     <input
                       type="email"
+                      id="email"
+                      name="email"
                       class="form-control"
                       placeholder="Email Address"
+                      required
                     />
                   </div>
                 </div>
@@ -139,7 +148,9 @@
                   <div class="form-group">
                     <i class="bi bi-telephone"></i>
                     <input
-                      type="text"
+                      type="tel"
+                      id="phone"
+                      name="phone"
                       class="form-control"
                       placeholder="Phone"
                     />
@@ -150,34 +161,40 @@
                     <i class="bi bi-info-circle"></i>
                     <input
                       type="text"
+                      id="subject"
+                      name="subject"
                       class="form-control"
                       placeholder="Subject"
+                      required
                     />
                   </div>
                 </div>
                 <div class="col-12">
-                  <div
-                    class="form-group"
-                  >
+                  <div class="form-group">
                     <i class="bi bi-pencil"></i>
                     <textarea
+                      id="message"
+                      name="message"
                       class="form-control"
                       rows="4"
                       placeholder="How can we help you? Feel free to get in touch!"
+                      required
                     ></textarea>
                   </div>
                 </div>
-                <div
-                  class="col-12 d-flex justify-content-between align-items-center"
-                >
-                  <div
-                    class="form-check"
-                  >
+                <!-- Hidden field to specify recipient -->
+                <input type="hidden" name="_to" value="info@josmiancare.com">
+                <input type="hidden" name="_subject" value="New Contact Form Submission from Josmiancare Website">
+                <input type="hidden" name="_next" value="https://josmiancare.com/contact.html?success=true">
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                  <div class="form-check">
                     <input
                       class="form-check-input"
                       type="checkbox"
                       value=""
                       id="flexCheckDefault"
+                      name="consent"
+                      required
                     />
                     <label class="form-check-label" for="flexCheckDefault">
                       I agree that my data is collected and stored.
@@ -186,6 +203,7 @@
                   <button
                     type="submit"
                     class="btn btn-cta"
+                    id="submitBtn"
                   >
                     Get In Touch
                   </button>
