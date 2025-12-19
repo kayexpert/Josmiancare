@@ -17,16 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const submitBtn = document.getElementById('submitBtn');
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
             const consent = document.getElementById('flexCheckDefault').checked;
             
             if (!consent) {
-                alert('Please agree to the data collection terms before submitting.');
+                showErrorMessage('Please agree to the data collection terms before submitting.');
                 return;
             }
             
@@ -34,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending...';
             submitBtn.disabled = true;
             
-            // Try Formspree first, fallback to mailto
-            sendFormData(contactForm, {name, email, phone, subject, message}, submitBtn);
+            // Submit form data
+            sendFormData(contactForm, submitBtn);
         });
     }
 
@@ -45,16 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
         contactFormHome.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const submitBtn = document.getElementById('submitBtnHome');
-            const name = document.getElementById('nameHome').value;
-            const email = document.getElementById('emailHome').value;
-            const phone = document.getElementById('phoneHome').value;
-            const subject = document.getElementById('subjectHome').value;
-            const message = document.getElementById('messageHome').value;
+            const submitBtn = contactFormHome.querySelector('button[type="submit"]');
             const consent = document.getElementById('flexCheckDefaultHome').checked;
             
             if (!consent) {
-                alert('Please agree to the data collection terms before submitting.');
+                showErrorMessage('Please agree to the data collection terms before submitting.');
                 return;
             }
             
@@ -62,64 +52,42 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending...';
             submitBtn.disabled = true;
             
-            // Try Formspree first, fallback to mailto
-            sendFormData(contactFormHome, {name, email, phone, subject, message}, submitBtn);
+            // Submit form data
+            sendFormData(contactFormHome, submitBtn);
         });
     }
 
     // Function to send form data
-    function sendFormData(form, data, submitBtn) {
+    function sendFormData(form, submitBtn) {
         // Create FormData object
         const formData = new FormData(form);
         
-        // Try to submit via Formspree
+        // Submit to backend
         fetch(form.action, {
             method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
+            body: formData
         })
-        .then(response => {
-            if (response.ok) {
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
                 showSuccessMessage();
                 form.reset();
             } else {
-                throw new Error('Formspree submission failed');
+                showErrorMessage(result.message || 'An error occurred. Please try again.');
             }
         })
         .catch(error => {
-            console.log('Formspree failed, showing alternative message:', error);
-            // Show a message with manual email option instead of automatic mailto
-            showEmailFallbackMessage(data);
-            form.reset();
+            console.error('Form submission error:', error);
+            showErrorMessage('Sorry, there was an error sending your message. Please try again.');
         })
         .finally(() => {
             // Reset button state
-            submitBtn.innerHTML = 'Get In Touch';
+            submitBtn.innerHTML = 'GET IN TOUCH';
             submitBtn.disabled = false;
         });
     }
 
-    // Function to create mailto link
-    function createMailtoLink(data) {
-        const to = 'obodainiikelvin@gmail.com';
-        const subject = encodeURIComponent(`Contact Form: ${data.subject || 'Website Inquiry'}`);
-        const body = encodeURIComponent(`
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone || 'Not provided'}
-Subject: ${data.subject}
 
-Message:
-${data.message}
-
----
-This message was sent from the Josmiancare website contact form.
-        `.trim());
-        
-        return `mailto:${to}?subject=${subject}&body=${body}`;
-    }
 
     // Function to show success message
     function showSuccessMessage() {
@@ -141,31 +109,24 @@ This message was sent from the Josmiancare website contact form.
         }, 5000);
     }
 
-    // Function to show email fallback message
-    function showEmailFallbackMessage(data) {
-        const fallbackAlert = document.createElement('div');
-        fallbackAlert.className = 'alert alert-info alert-dismissible fade show position-fixed';
-        fallbackAlert.style.cssText = 'top: 100px; right: 20px; z-index: 9999; max-width: 450px;';
-        
-        const mailtoLink = createMailtoLink(data);
-        
-        fallbackAlert.innerHTML = `
-            <i class="bi bi-envelope-fill me-2"></i>
-            <strong>Almost there!</strong> Please click the button below to send your message via email.
-            <br><br>
-            <a href="${mailtoLink}" class="btn btn-primary btn-sm">
-                <i class="bi bi-envelope me-1"></i>Send Email
-            </a>
+    // Function to show error message
+    function showErrorMessage(message) {
+        const errorAlert = document.createElement('div');
+        errorAlert.className = 'alert alert-danger alert-dismissible fade show position-fixed';
+        errorAlert.style.cssText = 'top: 100px; right: 20px; z-index: 9999; max-width: 400px;';
+        errorAlert.innerHTML = `
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong>Error!</strong> ${message}
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         `;
-        document.body.appendChild(fallbackAlert);
+        document.body.appendChild(errorAlert);
         
-        // Auto-remove after 10 seconds
+        // Auto-remove after 5 seconds
         setTimeout(() => {
-            if (fallbackAlert.parentNode) {
-                fallbackAlert.remove();
+            if (errorAlert.parentNode) {
+                errorAlert.remove();
             }
-        }, 10000);
+        }, 5000);
     }
 
     // Navbar scroll effect
