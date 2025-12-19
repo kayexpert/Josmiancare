@@ -89,11 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
-            console.log('Formspree failed, using mailto fallback:', error);
-            // Fallback to mailto
-            const mailtoLink = createMailtoLink(data);
-            window.location.href = mailtoLink;
-            showSuccessMessage();
+            console.log('Formspree failed, showing alternative message:', error);
+            // Show a message with manual email option instead of automatic mailto
+            showEmailFallbackMessage(data);
             form.reset();
         })
         .finally(() => {
@@ -105,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to create mailto link
     function createMailtoLink(data) {
-        const to = 'info@josmiancare.com';
+        const to = 'obodainiikelvin@gmail.com';
         const subject = encodeURIComponent(`Contact Form: ${data.subject || 'Website Inquiry'}`);
         const body = encodeURIComponent(`
 Name: ${data.name}
@@ -141,6 +139,33 @@ This message was sent from the Josmiancare website contact form.
                 successAlert.remove();
             }
         }, 5000);
+    }
+
+    // Function to show email fallback message
+    function showEmailFallbackMessage(data) {
+        const fallbackAlert = document.createElement('div');
+        fallbackAlert.className = 'alert alert-info alert-dismissible fade show position-fixed';
+        fallbackAlert.style.cssText = 'top: 100px; right: 20px; z-index: 9999; max-width: 450px;';
+        
+        const mailtoLink = createMailtoLink(data);
+        
+        fallbackAlert.innerHTML = `
+            <i class="bi bi-envelope-fill me-2"></i>
+            <strong>Almost there!</strong> Please click the button below to send your message via email.
+            <br><br>
+            <a href="${mailtoLink}" class="btn btn-primary btn-sm">
+                <i class="bi bi-envelope me-1"></i>Send Email
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.body.appendChild(fallbackAlert);
+        
+        // Auto-remove after 10 seconds
+        setTimeout(() => {
+            if (fallbackAlert.parentNode) {
+                fallbackAlert.remove();
+            }
+        }, 10000);
     }
 
     // Navbar scroll effect
